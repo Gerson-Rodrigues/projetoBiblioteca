@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Consulta de Livros</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+  </head>
+  <body onload="listarLivros()">
+    <h1 align="center">Biblioteca Genérica</h1>
+    <!-- Botão para abrir o modal -->
+    <div id="cadastro" align="right">
+      <button id="btn-cadastrar-livro" class="btn btn-outline-secondary">
+        Novo</button
+      ><span class="btn-spacing"></span>
+    </div>
+
+    <!-- Modal de cadastro -->
+    <div id="modal-cadastrar-livro" style="display: none">
+      <form id="formLivro">
+        <label align="center"><h2>Cadastro de Livro</h2></label>
+        <label>Título:</label>
+        <input
+          type="text"
+          id="titulo"
+          placeholder="Digite Aqui"
+          autocomplete="off"
+          required
+        /><br />
+        <label>Autor:</label>
+        <input
+          type="text"
+          id="autor"
+          placeholder="Digite Aqui"
+          autocomplete="off"
+          required
+        /><br />
+        <label>Ano de Publicação:</label>
+        <input
+          type="number"
+          id="anoPublicacao"
+          min="1600"
+          max="2099"
+          placeholder="Ano"
+          autocomplete="off"
+          required
+        /><br /><br />
+        <button type="submit" class="btn btn-success">Cadastrar</button>
+        <span class="btn-spacing" ></span>
+        <button id="alinha" type="button" onclick="fecharFormulario()" class="btn btn-outline-danger">X</button>
+      </form>
+    </div>
+    <br />
+
+    <!-- Modal de edição -->
+    <div id="modal-editar-livro" style="display: none">
+      <form id="formEditarLivro">
+        <label align="center"><h2>Editar Livro</h2></label>
+        <input type="hidden" id="livroId" />
+        <label>Título:</label>
+        <input type="text" id="livroTitulo" autocomplete="off" required />
+        <label>Autor:</label>
+        <input type="text" id="livroAutor" autocomplete="off" required />
+        <label>Ano de Publicação:</label>
+        <input
+          type="number"
+          id="livroAnoPublicacao"
+          min="1600"
+          max="2099"
+          autocomplete="off"
+          required
+        /><br /><br />
+        <button type="submit" class="btn btn-success">Atualizar</button>
+        <span class="btn-spacing"></span>
+        <button id="alinha" type="button" class="btn btn-outline-warning" onclick="fecharEditar()">X</button>
+      </form>
+    </div>
+    <br />
+
+    <div align="right">
+      <button
+        id="btn-editar-livro"
+        class="btn btn-outline-primary"
+        onclick="abrirFormularioEdicao()"
+      >
+        Editar
+      </button>
+      <span class="btn-spacing"></span>
+      <button
+        id="btn-excluir-livro"
+        class="btn btn-outline-danger"
+        onclick="excluirLivro()"
+      >
+        Excluir</button
+      ><span class="btn-spacing"></span>
+    </div>
+    <br />
+    <div class="btn-spacing">
+      <h1>Lista de Livros</h1>
+      <table>
+        <thead>
+          <tr>
+            <th class="col-md-1" style="display: none">ID</th>
+            <th class="col-md-6">Título</th>
+            <th class="col-md-3">Autor</th>
+            <th class="col-md-1">Ano</th>
+            <th class="col-md-1" style="display: none">Selecionar</th>
+          </tr>
+        </thead>
+        <tbody id="livros-body" onclick="marcarLivro(event)"></tbody>
+      </table>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
